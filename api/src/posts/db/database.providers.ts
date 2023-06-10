@@ -9,7 +9,13 @@ export const databaseProviders = [
     provide: 'SEQUELIZE',
     useFactory: async () => {
       const sequelize = new Sequelize(process.env.URI, {
-        dialect: 'mysql',
+        dialect: 'postgres',
+        ssl: true,
+        dialectOptions: {
+          ssl: {
+            require: true,
+          }
+        }
       });
       sequelize.addModels([Post]);
       await sequelize.sync();
