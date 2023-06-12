@@ -10,7 +10,9 @@ export class PostsService {
   ) {}
 
   async getAll(): Promise<Post[]> {
-    return await this.postsRepository.findAll();
+    return await this.postsRepository.findAll({
+      order: ['id'],
+    });
   }
 
   async create(post: Omit<PostDto, 'id'>): Promise<Post>{
