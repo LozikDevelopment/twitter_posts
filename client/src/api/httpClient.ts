@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig } from "axios";
 
 function createHttpClient() {
   return axios.create({
-    baseURL: "http://localhost:3000",
+    baseURL: "https://twitter-posts.onrender.com/",
   });
 }
 
