@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "http://LozikDevelopment.github.io/twitter_posts",
+  "homepage": "https://LozikDevelopment.github.io/twitter_posts",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
