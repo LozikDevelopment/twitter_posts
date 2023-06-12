@@ -49,7 +49,8 @@ export const PostForm = () => {
         </IconsBox>
 
         <Button 
-          variant="contained" 
+          variant="contained"
+          sx={{ ml: 2 }} 
           onClick={handleAddPost}
         >
           Tweet
