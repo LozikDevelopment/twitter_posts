@@ -5,12 +5,20 @@ import {  useQuery } from "react-query";
 import { apiHandlers } from "../../api/apiHandlers";
 import { Post } from "../../types/Post";
 import { PostInfo } from "./postInfo";
-import { Fragment } from "react";
+import { FC, Fragment, useMemo } from "react";
 import { PostForm } from "./postForm";
 import { CircularProgress } from "@mui/material";
+import { findPosts } from "../../helpers";
 
-export const Posts = () => {
+interface Props {
+  value: string,
+}
+
+export const Posts: FC<Props> = (props) => {
+  const { value } = props;
   const { data, isLoading } = useQuery('posts', apiHandlers.posts.list);
+
+  const filteredPosts = useMemo(() => findPosts(data, value), [data, value]);
 
   return (
     <PostsBox>
@@ -30,7 +38,7 @@ export const Posts = () => {
         </Flex>
       )}
 
-      {data?.map((post: Post) => (
+      {filteredPosts?.map((post: Post) => (
        <Fragment key={post.id}>
         <PostInfo post={post} />
 
